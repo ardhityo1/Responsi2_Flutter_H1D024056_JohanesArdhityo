@@ -27,7 +27,7 @@ Aplikasi cuaca Flutter dengan tampilan seperti aplikasi cuaca bawaan ponsel: lat
 |---|---|---|---|
 | ![Weather Screen](docs/screenshots/weather-home.png) | ![Detail cuaca](docs/screenshots/weather-details.png) | ![Hasil pencarian](docs/screenshots/search-results.png) | ![Favorit](docs/screenshots/search-favorites.png) |
 
-Screenshot lain: [cuaca malam](docs/screenshots/weather-night.png) · [riwayat pencarian](docs/screenshots/search-history.png) · [persistensi setelah reload](docs/screenshots/search-persistence.png) · [layout 360×640](docs/screenshots/layout-360.png).
+Screenshot lain: [cuaca malam](docs/screenshots/weather-night.png) · [riwayat pencarian](docs/screenshots/search-history.png) · [hasil kosong](docs/screenshots/search-empty.png) · [error + Coba lagi](docs/screenshots/weather-error.png) · [persistensi setelah reload](docs/screenshots/search-persistence.png) · [layout 360×640](docs/screenshots/layout-360.png) · [pengaturan](docs/screenshots/settings.png) · [detail 7 hari](docs/screenshots/forecast-detail.png) · [mode daftar](docs/screenshots/forecast-list.png).
 
 ## Teknologi
 
@@ -61,7 +61,7 @@ flutter analyze
 flutter test
 ```
 
-Saat ini `flutter analyze` bersih dan 17 unit test lulus (parsing JSON, model, mapper kode cuaca, gradien, dan AQI).
+Saat ini `flutter analyze` bersih dan 28 unit/widget test lulus (parsing JSON, model, mapper kode cuaca, gradien, AQI, penyimpanan lokal, ViewModel cuaca/favorit, serta regresi state pencarian).
 
 ## Struktur Folder
 

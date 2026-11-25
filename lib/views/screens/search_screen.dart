@@ -30,6 +30,14 @@ class _SearchScreenState extends State<SearchScreen> {
   final FocusNode _focusNode = FocusNode();
 
   @override
+  void initState() {
+    super.initState();
+    // Mulai dari kondisi awal (favorit/riwayat), bukan hasil pencarian
+    // dari sesi sebelumnya. Layar belum dibangun, jadi tidak perlu notify.
+    context.read<SearchViewModel>().reset(notify: false);
+  }
+
+  @override
   void dispose() {
     _controller.dispose();
     _focusNode.dispose();

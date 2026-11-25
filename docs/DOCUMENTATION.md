@@ -156,6 +156,7 @@ Semua ViewModel adalah `ChangeNotifier` dan didaftarkan di `main.dart` melalui `
 - Debounce 500 ms dan minimal 2 karakter.
 - `_requestToken` mencegah respons lama menimpa hasil query terbaru.
 - `loadHistory()`, `addToHistory()`, dan `clearHistory()` berkomunikasi dengan repository.
+- `reset()` mengosongkan query/hasil saat Search Screen dibuka lagi, sehingga hasil pencarian sesi sebelumnya tidak muncul saat field masih kosong. Dipanggil dari `initState` dengan `notify: false` karena layar belum dibangun.
 - Timer dibatalkan di `dispose()`; `notifyListeners()` tidak dipanggil setelah ViewModel di-dispose.
 
 ### FavoritesViewModel
@@ -225,6 +226,8 @@ Test yang tersedia:
 
 - `test/weather_data_parsing_test.dart` — parsing lokasi, cuaca saat ini, array hourly/daily paralel, timezone, dan AQI memakai fixture JSON asli di `test/fixtures/`.
 - `test/weather_code_mapper_test.dart` — label/ikon kode WMO, gradien siang/malam, kategori dan deskripsi AQI.
+- `test/search_viewmodel_test.dart` — penyimpanan favorit/lokasi terakhir, riwayat unik maksimal 10 dengan urutan terbaru, `reset()` pencarian, dan regression test yang memastikan Search Screen menampilkan riwayat (bukan query lama) saat dibuka kembali.
+- `test/weather_viewmodel_test.dart` — fallback lokasi Jakarta vs `last_location`, susunan `hourlyItems` beserta sisipan sunset, ketahanan saat AQI gagal, pertahanan data saat `refresh()` gagal, dan persistensi `FavoritesViewModel`.
 
 Verifikasi manual yang sudah dilakukan (web build, viewport 390×844):
 
@@ -233,7 +236,10 @@ Verifikasi manual yang sudah dilakukan (web build, viewport 390×844):
 3. Reload aplikasi → lokasi terakhir tetap Purwokerto.
 4. Buka pencarian → riwayat berisi Purwokerto.
 5. Tandai favorit → reload → favorit tetap tersimpan dan tampil.
-6. Layout 360×640 dan tablet tidak overflow.
+6. Buka pencarian lagi tanpa reload → tampil riwayat, bukan hasil query sebelumnya.
+7. Cari "zzzqqq" → state kosong "Kota tidak ditemukan".
+8. Mode offline → pilih kota → muncul error koneksi dan tombol **Coba lagi**; setelah online, tombol tersebut memuat data kembali.
+9. Layout 360×640 dan tablet tidak overflow; pengaturan, detail 7 hari, dan mode Daftar berfungsi.
 
 ## 10. Poin yang Perlu Dijelaskan Saat Video
 

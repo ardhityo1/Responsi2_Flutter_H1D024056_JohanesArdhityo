@@ -34,6 +34,20 @@ class SearchViewModel extends ChangeNotifier {
     _notify();
   }
 
+  /// Mengosongkan pencarian saat layar dibuka kembali, agar hasil sesi
+  /// sebelumnya tidak tampil padahal field pencarian masih kosong.
+  /// [notify] dimatikan saat dipanggil dari `initState`, karena notifikasi
+  /// pada fase build akan memicu `markNeedsBuild` dan error.
+  void reset({bool notify = true}) {
+    _debounce?.cancel();
+    _requestToken++;
+    _query = '';
+    _results = const [];
+    _errorMessage = null;
+    _state = ViewState.initial;
+    if (notify) _notify();
+  }
+
   void onQueryChanged(String value) {
     _query = value;
     _debounce?.cancel();
