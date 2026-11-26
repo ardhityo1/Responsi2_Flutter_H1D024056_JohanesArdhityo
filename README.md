@@ -29,6 +29,14 @@ Aplikasi cuaca Flutter dengan tampilan seperti aplikasi cuaca bawaan ponsel: lat
 
 Screenshot lain: [cuaca malam](docs/screenshots/weather-night.png) · [riwayat pencarian](docs/screenshots/search-history.png) · [hasil kosong](docs/screenshots/search-empty.png) · [error + Coba lagi](docs/screenshots/weather-error.png) · [persistensi setelah reload](docs/screenshots/search-persistence.png) · [layout 360×640](docs/screenshots/layout-360.png) · [pengaturan](docs/screenshots/settings.png) · [detail 7 hari](docs/screenshots/forecast-detail.png) · [mode daftar](docs/screenshots/forecast-list.png).
 
+## Video Penjelasan
+
+Demo aplikasi dan penjelasan kode (5–8 menit):
+
+[![Video penjelasan](https://img.youtube.com/vi/yfPnSozQNIg/hqdefault.jpg)](https://youtu.be/yfPnSozQNIg)
+
+**Link:** [https://youtu.be/yfPnSozQNIg](https://youtu.be/yfPnSozQNIg)
+
 ## Teknologi
 
 - Flutter + Dart, Material 3
